@@ -9,11 +9,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download artifact from Repo A
+      - name: Download artifact from Repo D
         uses: dawidd6/action-download-artifact@v3
         with:
           github_token: ${{ secrets.PAT_TOKEN }}
-          repo: OWNER/artifact-producer
+          repo: YousseffHassaan/artifact-producer
           workflow: Produce Artifact
           name: shared-file
 
