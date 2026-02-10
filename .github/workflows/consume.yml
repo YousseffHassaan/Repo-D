@@ -13,7 +13,7 @@ jobs:
           curl -L \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
-            https://api.github.com/repos/OWNER/artifact-producer/actions/artifacts \
+            https://api.github.com/repos/Repo-C/artifact-producer/actions/artifacts \
             -o artifacts.json
 
       - name: Show result
