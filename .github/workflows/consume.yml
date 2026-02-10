@@ -9,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Download artifact from Repo D
+      - name: Download artifact from Repo C
         uses: dawidd6/action-download-artifact@v3
         with:
           github_token: ${{ secrets.PAT_TOKEN }}
           repo: YousseffHassaan/Repo-C
-          workflow: Produce Artifact
+          workflow: produce.yml
           name: shared-file
 
       - name: Show file
