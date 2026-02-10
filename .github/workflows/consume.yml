@@ -1,0 +1,20 @@
+name: Consume Artifact
+
+on:
+  workflow_dispatch:
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download artifact from Repo A
+        run: |
+          curl -L \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
+            https://api.github.com/repos/OWNER/artifact-producer/actions/artifacts \
+            -o artifacts.json
+
+      - name: Show result
+        run: cat artifacts.json
