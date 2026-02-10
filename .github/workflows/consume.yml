@@ -1,7 +1,8 @@
 name: Consume Artifact
 
 on:
-  workflow_dispatch:
+  repository_dispatch:
+    types: [run-consumer]
 
 jobs:
   fetch:
@@ -9,12 +10,12 @@ jobs:
 
     steps:
       - name: Download artifact from Repo A
-        run: |
-          curl -L \
-            -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.PAT_TOKEN }}" \
-            https://api.github.com/repos/Repo-C/artifact-producer/actions/artifacts \
-            -o artifacts.json
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          github_token: ${{ secrets.PAT_TOKEN }}
+          repo: OWNER/artifact-producer
+          workflow: Produce Artifact
+          name: shared-file
 
-      - name: Show result
-        run: cat artifacts.json
+      - name: Show file
+        run: cat artifact.txt
